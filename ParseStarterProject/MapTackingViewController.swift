@@ -20,7 +20,7 @@ class MapTackingViewController: UIViewController, CLLocationManagerDelegate, MKM
     @IBOutlet weak var distanciaLabel: UILabel!
     
     var user: PFUser!
-    
+    var saveCoordenates: PFObject!
     
     var manager: CLLocationManager!
     var locationsInRoute: [CLLocation] = []
@@ -41,7 +41,7 @@ class MapTackingViewController: UIViewController, CLLocationManagerDelegate, MKM
         //Setup our Location Manager
         manager = CLLocationManager()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         manager.requestAlwaysAuthorization()
         //manager.startUpdatingLocation()
         startTrack()
@@ -83,6 +83,26 @@ class MapTackingViewController: UIViewController, CLLocationManagerDelegate, MKM
         }
         
         locationsInRoute.append(locations[0] )
+        
+        
+        let point: PFGeoPoint = PFGeoPoint(location: locations[0])
+        saveCoordenates = PFObject(className: "Route")
+        saveCoordenates["kids"] = "0"
+        saveCoordenates["longitude"] = locations[0].coordinate.longitude
+        saveCoordenates["latitude"] = locations[0].coordinate.latitude
+        saveCoordenates["start"] = point
+        var i = 0
+        
+        do {
+            
+            try saveCoordenates.save()
+            print("la i \(i)")
+            i++
+            
+        } catch let error {
+            
+            print(error)
+        }
         
         let spanX = 0.025
         let spanY = 0.025
@@ -134,7 +154,7 @@ class MapTackingViewController: UIViewController, CLLocationManagerDelegate, MKM
     func eachSecond(timer: NSTimer) {
         
         seconds += 5.0
-        distanceLabel.text = "\(locationsInRoute.last!.speed * 1.609344) km/h"
+        distanceLabel.text = "\(round(locationsInRoute.last!.speed * 1.609344)) km/h"
         
         if locationsInRoute.count > 0 {
         
@@ -142,13 +162,16 @@ class MapTackingViewController: UIViewController, CLLocationManagerDelegate, MKM
             
             print("viendo ke sale con la distancia \(dist.description)")
             
-            distanciaLabel.text = "\(round(dist / 1000)) km"
+            distanciaLabel.text = "\(round(dist)) mts"
             
         }
+        
+        
         
         timeLabel.text = "\(seconds)"
         
     }
+    //
     
     func startTrack() {
         
@@ -164,6 +187,9 @@ class MapTackingViewController: UIViewController, CLLocationManagerDelegate, MKM
     }
     
     func startLocationUpdates() {
+        
+        
+        
         
         manager.startUpdatingLocation()
 

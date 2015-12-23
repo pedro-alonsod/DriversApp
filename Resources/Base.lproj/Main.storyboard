@@ -235,6 +235,9 @@
                                 <exclude reference="9yw-bb-oqm"/>
                                 <exclude reference="iBx-NH-pIz"/>
                                 <exclude reference="x4b-4v-0EA"/>
+                                <exclude reference="Gtt-qQ-ZAz"/>
+                                <exclude reference="iua-AG-TnT"/>
+                                <exclude reference="kwn-SE-AuQ"/>
                                 <exclude reference="4AF-RA-lsV"/>
                                 <exclude reference="BvV-t3-6NY"/>
                                 <exclude reference="sIb-vZ-VL9"/>
@@ -242,9 +245,6 @@
                                 <exclude reference="FBB-xh-x2k"/>
                                 <exclude reference="LH4-06-F3x"/>
                                 <exclude reference="pN1-KT-b6P"/>
-                                <exclude reference="Gtt-qQ-ZAz"/>
-                                <exclude reference="iua-AG-TnT"/>
-                                <exclude reference="kwn-SE-AuQ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -264,6 +264,9 @@
                                 <include reference="9yw-bb-oqm"/>
                                 <include reference="iBx-NH-pIz"/>
                                 <include reference="x4b-4v-0EA"/>
+                                <include reference="Gtt-qQ-ZAz"/>
+                                <include reference="iua-AG-TnT"/>
+                                <include reference="kwn-SE-AuQ"/>
                                 <include reference="4AF-RA-lsV"/>
                                 <include reference="BvV-t3-6NY"/>
                                 <include reference="sIb-vZ-VL9"/>
@@ -271,9 +274,6 @@
                                 <include reference="FBB-xh-x2k"/>
                                 <include reference="LH4-06-F3x"/>
                                 <include reference="pN1-KT-b6P"/>
-                                <include reference="Gtt-qQ-ZAz"/>
-                                <include reference="iua-AG-TnT"/>
-                                <include reference="kwn-SE-AuQ"/>
                             </mask>
                         </variation>
                     </view>
